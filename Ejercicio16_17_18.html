@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de jQuery - Parte 4</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #divDobleClick {
+            width: 800px;
+            height: 70px;
+            background-color: lightgray;
+        }
+        .text-input {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Redimensionar div con doble clic</h1>
+    <p>Problema: Disponer un div de 800x70 píxeles. Al hacer doble clic redimensionarlo a 250x250 píxeles y si se hace doble clic nuevamente, retornar al tamaño 800x70.</p>
+
+    <div id="divDobleClick"></div>
+
+    <script>
+        $(document).ready(function(){
+            let originalWidth = "800px";
+            let originalHeight = "70px";
+            let toggled = false;
+
+            $("#divDobleClick").dblclick(function(){
+                if (!toggled) {
+                    $(this).css({ width: "250px", height: "250px" });
+                    toggled = true;
+                } else {
+                    $(this).css({ width: originalWidth, height: originalHeight });
+                    toggled = false;
+                }
+            });
+        });
+    </script>
+
+    <h1>17 - Evento focus</h1>
+    <p>Problema: Disponer dos controles de tipo text con algún contenido. Fijar de color azul su fuente. Al tomar foco el control cambiar a color rojo.</p>
+
+    <input type="text" class="text-input" value="Texto 1"><br><br>
+    <input type="text" class="text-input" value="Texto 2"><br><br>
+
+    <script>
+        $(document).ready(function(){
+            $(".text-input").focus(function(){
+                $(this).css("color", "red");
+            }).blur(function(){
+                $(this).css("color", "blue");
+            });
+        });
+    </script>
+
+    <h1>18 - Evento blur</h1>
+    <p>Problema: Confeccionar un formulario que contenga un text. Si al perder el foco su contenido es una cadena vacía, mostrar mediante un alert tal situación.</p>
+
+    <input type="text" id="inputBlur"><br><br>
+
+    <script>
+        $(document).ready(function(){
+            $("#inputBlur").blur(function(){
+                let valor = $(this).val();
+                if (valor.length === 0) {
+                    alert("No ingresó datos");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

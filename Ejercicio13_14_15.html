@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de jQuery - Parte 3</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #divMousemove {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>13 - Evento hover</h1>
+    <p>Problema: Crear una tabla con dos filas y dos columnas, cambiar el color del interior de la casilla cuando ingresamos con el mouse y regresarla al original cuando salimos.</p>
+
+    <table border="1" id="tablaHover">
+        <tr>
+            <td>Celda 1</td>
+            <td>Celda 2</td>
+        </tr>
+        <tr>
+            <td>Celda 3</td>
+            <td>Celda 4</td>
+        </tr>
+    </table>
+
+    <script>
+        $(document).ready(function(){
+            $("#tablaHover td").hover(
+                function() {
+                    $(this).css("background-color", "lightblue");
+                },
+                function() {
+                    $(this).css("background-color", "");
+                }
+            );
+        });
+    </script>
+
+    <h1>14 - Evento mousemove</h1>
+    <p>Problema: Crear un div de 200 píxeles de ancho y alto. Mostrar luego la coordenada donde se encuentra la flecha del mouse cuando está dentro del div. Mostrar un mensaje si no se encuentra dentro del div.</p>
+
+    <div id="divMousemove"></div>
+    <p id="coordenadas">Posición del mouse: </p>
+
+    <script>
+        $(document).ready(function(){
+            $("#divMousemove").mousemove(function(event){
+                let x = event.pageX - $(this).offset().left;
+                let y = event.pageY - $(this).offset().top;
+                $("#coordenadas").text("Posición del mouse: (" + x + ", " + y + ")");
+            });
+
+            $("#divMousemove").mouseleave(function(){
+                $("#coordenadas").text("El mouse está fuera del div");
+            });
+        });
+    </script>
+
+    <h1>15 - Eventos mousedown y mouseup</h1>
+    <p>Problema: Crear una página con dos botones. Al ser presionados cambiar su color de fondo. Retornar al color original cuando se suelta el botón del mouse.</p>
+
+    <button id="boton1">Botón 1</button>
+    <button id="boton2">Botón 2</button>
+
+    <script>
+        $(document).ready(function(){
+            $("button").mousedown(function(){
+                $(this).css("background-color", "lightcoral");
+            });
+
+            $("button").mouseup(function(){
+                $(this).css("background-color", "");
+            });
+        });
+    </script>
+
+</body>
+</html>

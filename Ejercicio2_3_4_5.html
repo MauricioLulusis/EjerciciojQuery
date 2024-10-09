@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problemas de jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>2 - Nueva manera de programar JavaScript con jQuery.</h1>
+    <p>Problema: Disponer dos párrafos. Capturar el evento click solo del primero utilizando la librería jQuery.</p>
+
+    <p id="parrafo1">Este es el primer párrafo. Haz clic aquí.</p>
+    <p id="parrafo2">Este es el segundo párrafo. No tiene evento de clic.</p>
+
+    <script>
+        $(document).ready(function(){
+            $("#parrafo1").click(function(){
+                alert("Haz hecho clic en el primer párrafo");
+            });
+        });
+    </script>
+
+    <h1>3 - Selección de un elemento del documento mediante el id.</h1>
+    <p>Problema: Confeccionar una página que muestre una tabla con dos filas, cambiar el color de fondo cuando sea presionada con el mouse.</p>
+
+    <table id="tabla1">
+        <tr><td>Fila 1</td></tr>
+        <tr><td>Fila 2</td></tr>
+    </table>
+
+    <script>
+        $(document).ready(function(){
+            $("#tabla1 tr").click(function(){
+                $(this).css("background-color", "yellow");
+            });
+        });
+    </script>
+
+    <h1>4 - Selección de elementos por el tipo de elementos.</h1>
+    <p>Problema: Mostrar una lista no ordenada con 4 elementos 'li'. Ocultar el que se presiona. Para ocultar un elemento jQuery tiene un método llamado hide().</p>
+
+    <ul>
+        <li>Elemento 1</li>
+        <li>Elemento 2</li>
+        <li>Elemento 3</li>
+        <li>Elemento 4</li>
+    </ul>
+
+    <script>
+        $(document).ready(function(){
+            $("li").click(function(){
+                $(this).hide();
+            });
+        });
+    </script>
+
+    <h1>5 - Selección de elementos utilizando los selectores CSS.</h1>
+    <p>Problema: Confeccionar una página que muestre dos tablas con tres filas cada una. Cambiar el color de fondo de cada fila de la primera tabla cuando sea presionada con el mouse.</p>
+
+    <table class="tabla2">
+        <tr><td>Fila 1</td></tr>
+        <tr><td>Fila 2</td></tr>
+        <tr><td>Fila 3</td></tr>
+    </table>
+    <table class="tabla2">
+        <tr><td>Fila 1</td></tr>
+        <tr><td>Fila 2</td></tr>
+        <tr><td>Fila 3</td></tr>
+    </table>
+
+    <script>
+        $(document).ready(function(){
+            $(".tabla2:first-of-type tr").click(function(){
+                $(this).css("background-color", "lightblue");
+            });
+        });
+    </script>
+
+</body>
+</html>

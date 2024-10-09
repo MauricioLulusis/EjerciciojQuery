@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de jQuery - Parte 5</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .resaltado {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>20 - Efectos con los métodos show y hide</h1>
+    <p>Problema: Confeccionar una página que contenga un div con un conjunto de párrafos. Cuando se presione con el mouse dentro del div ocultarlo lentamente y cuando esté completamente oculto hacer que aparezca lentamente otro bloque de texto.</p>
+
+    <div id="bloque1">
+        <p>Párrafo 1 del bloque 1.</p>
+        <p>Párrafo 2 del bloque 1.</p>
+    </div>
+
+    <div id="bloque2" style="display: none;">
+        <p>Párrafo del bloque 2 que aparece después de ocultar el bloque 1.</p>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $("#bloque1").click(function(){
+                $(this).hide("slow", function(){
+                    $("#bloque2").show("slow");
+                });
+            });
+        });
+    </script>
+
+    <h1>21 - Efectos con los métodos fadeIn y fadeOut</h1>
+    <p>Problema: Confeccionar una página que contenga un div con un conjunto de párrafos. Cuando se presione con el mouse dentro del div ocultarlo por decoloración y cuando esté completamente oculto hacer que aparezca lentamente otro bloque.</p>
+
+    <div id="fadeBloque1">
+        <p>Párrafo 1 del bloque 1 (fade).</p>
+        <p>Párrafo 2 del bloque 1 (fade).</p>
+    </div>
+
+    <div id="fadeBloque2" style="display: none;">
+        <p>Párrafo del bloque 2 que aparece después del fade del bloque 1.</p>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $("#fadeBloque1").click(function(){
+                $(this).fadeOut("slow", function(){
+                    $("#fadeBloque2").fadeIn("slow");
+                });
+            });
+        });
+    </script>
+
+    <h1>22 - Efecto con el método fadeTo</h1>
+    <p>Problema: Confeccionar una página que contenga un div con un conjunto de párrafos. Cuando se presione con el mouse dentro del div reducir su opacidad a 0.20 y cuando esté completamente oculto hacer que aparezca lentamente otro bloque.</p>
+
+    <div id="fadeToBloque1">
+        <p>Párrafo 1 del bloque 1 (fadeTo).</p>
+        <p>Párrafo 2 del bloque 1 (fadeTo).</p>
+    </div>
+
+    <div id="fadeToBloque2" style="display: none;">
+        <p>Párrafo del bloque 2 que aparece después del fadeTo del bloque 1.</p>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $("#fadeToBloque1").click(function(){
+                $(this).fadeTo("slow", 0.20, function(){
+                    $("#fadeToBloque2").fadeIn("slow");
+                });
+            });
+        });
+    </script>
+
+    <h1>24 - Iteración por los elementos (each)</h1>
+    <p>Problema: Una página tiene una lista de hipervínculos. Resaltar todos los subdominios .ar utilizando el método indexOf de la clase String para verificar si una cadena se encuentra en otra.</p>
+
+    <ul>
+        <li><a href="https://www.google.com">Google</a></li>
+        <li><a href="https://www.example.ar">Example AR</a></li>
+        <li><a href="https://www.github.com">GitHub</a></li>
+        <li><a href="https://www.website.ar">Website AR</a></li>
+    </ul>
+
+    <script>
+        $(document).ready(function(){
+            $("a").each(function(){
+                let href = $(this).attr("href");
+                if (href.indexOf(".ar") !== -1) {
+                    $(this).addClass("resaltado");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

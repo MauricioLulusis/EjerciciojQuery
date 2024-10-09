@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .noticia {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>6 - Selección de elementos utilizando las clases CSS definidas.</h1>
+    <p>Problema: Disponer un título de noticia y la descripción de la noticia en un div con un nombre de clase. Repetir esto para tres noticias. Agregar tres botones que rescaten el nombre de la clase para la descripción de la noticia y cambien su tamaño de fuente.</p>
+
+    <div class="noticia">
+        <h3>Noticia 1</h3>
+        <p class="descripcion">Descripción de la primera noticia.</p>
+    </div>
+    <div class="noticia">
+        <h3>Noticia 2</h3>
+        <p class="descripcion">Descripción de la segunda noticia.</p>
+    </div>
+    <div class="noticia">
+        <h3>Noticia 3</h3>
+        <p class="descripcion">Descripción de la tercera noticia.</p>
+    </div>
+
+    <button id="pequeño">Fuente pequeña</button>
+    <button id="mediano">Fuente mediana</button>
+    <button id="grande">Fuente grande</button>
+
+    <script>
+        $(document).ready(function(){
+            $("#pequeño").click(function(){
+                $(".descripcion").css("font-size", "12px");
+            });
+            $("#mediano").click(function(){
+                $(".descripcion").css("font-size", "16px");
+            });
+            $("#grande").click(function(){
+                $(".descripcion").css("font-size", "20px");
+            });
+        });
+    </script>
+
+    <h1>7 - Método text(), text(valor).</h1>
+    <p>Problema: Crear una página con dos tablas de 3 filas y 3 columnas. Luego al presionar un botón cambiar por la cadena "-" el contenido de la primera tabla, dejando intacto el de la segunda.</p>
+
+    <table border="1" id="tabla1">
+        <tr>
+            <td>Texto 1</td>
+            <td>Texto 2</td>
+            <td>Texto 3</td>
+        </tr>
+        <tr>
+            <td>Texto 4</td>
+            <td>Texto 5</td>
+            <td>Texto 6</td>
+        </tr>
+        <tr>
+            <td>Texto 7</td>
+            <td>Texto 8</td>
+            <td>Texto 9</td>
+        </tr>
+    </table>
+
+    <table border="1" id="tabla2">
+        <tr>
+            <td>Texto A</td>
+            <td>Texto B</td>
+            <td>Texto C</td>
+        </tr>
+        <tr>
+            <td>Texto D</td>
+            <td>Texto E</td>
+            <td>Texto F</td>
+        </tr>
+        <tr>
+            <td>Texto G</td>
+            <td>Texto H</td>
+            <td>Texto I</td>
+        </tr>
+    </table>
+
+    <button id="cambiarTexto">Cambiar contenido de la primera tabla</button>
+
+    <script>
+        $(document).ready(function(){
+            $("#cambiarTexto").click(function(){
+                $("#tabla1 td").text("-");
+            });
+        });
+    </script>
+
+    <h1>8 - Métodos attr(nombre de propiedad), attr(nombre de propiedad, valor) y removeAttr(nombre de propiedad)</h1>
+    <p>Problema: Definir un hipervínculo con la propiedad href con cadena vacía. Luego disponer tres botones que permitan fijar distintos hipervínculos para la propiedad href. Además actualizar el texto del hipervínculo.</p>
+
+    <a id="enlace" href="">Enlace sin destino</a><br><br>
+
+    <button id="enlace1">Asignar enlace 1</button>
+    <button id="enlace2">Asignar enlace 2</button>
+    <button id="eliminarEnlace">Eliminar enlace</button>
+
+    <script>
+        $(document).ready(function(){
+            $("#enlace1").click(function(){
+                $("#enlace").attr("href", "https://www.google.com").text("Ir a Google");
+            });
+            $("#enlace2").click(function(){
+                $("#enlace").attr("href", "https://www.github.com").text("Ir a GitHub");
+            });
+            $("#eliminarEnlace").click(function(){
+                $("#enlace").removeAttr("href").text("Enlace sin destino");
+            });
+        });
+    </script>
+
+</body>
+</html>

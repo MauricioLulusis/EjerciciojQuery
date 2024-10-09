@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de jQuery - Parte 2</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .thead-style {
+            background-color: lightblue;
+            font-weight: bold;
+        }
+        .tbody-style {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>10 - Método html() y</h1>
+    <p>Problema: Definir una tabla con un conjunto de filas y columnas. Definir dos estilos, uno para la sección thead y otro para la sección tbody. Mediante dos botones permitir asociar y desasociar clases.</p>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Columna 1</th>
+                <th>Columna 2</th>
+                <th>Columna 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Fila 1, Columna 1</td>
+                <td>Fila 1, Columna 2</td>
+                <td>Fila 1, Columna 3</td>
+            </tr>
+            <tr>
+                <td>Fila 2, Columna 1</td>
+                <td>Fila 2, Columna 2</td>
+                <td>Fila 2, Columna 3</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button id="asociarClases">Asociar Clases</button>
+    <button id="desasociarClases">Desasociar Clases</button>
+
+    <script>
+        $(document).ready(function(){
+            $("#asociarClases").click(function(){
+                $("thead").addClass("thead-style");
+                $("tbody").addClass("tbody-style");
+            });
+
+            $("#desasociarClases").click(function(){
+                $("thead").removeClass("thead-style");
+                $("tbody").removeClass("tbody-style");
+            });
+        });
+    </script>
+
+    <h1>html(valor)</h1>
+    <p>Problema: Confeccionar una página que tenga dos botones. El primero debe mostrar en un alert el contenido HTML de la cabecera de la página y el segundo el contenido HTML del cuerpo de la página.</p>
+
+    <button id="mostrarCabecera">Mostrar contenido de la cabecera</button>
+    <button id="mostrarCuerpo">Mostrar contenido del cuerpo</button>
+
+    <script>
+        $(document).ready(function(){
+            $("#mostrarCabecera").click(function(){
+                alert($("head").html());
+            });
+            $("#mostrarCuerpo").click(function(){
+                alert($("body").html());
+            });
+        });
+    </script>
+
+    <h1>11 - Administración de eventos con jQuery.</h1>
+    <p>Problema: Confeccionar una página que contenga algunas palabras con el elemento 'strong', luego cuando sean presionadas ocultarlas.</p>
+
+    <p>Este es un texto con <strong>palabras importantes</strong> que deben <strong>desaparecer</strong> cuando sean clickeadas.</p>
+
+    <script>
+        $(document).ready(function(){
+            $("strong").click(function(){
+                $(this).hide();
+            });
+        });
+    </script>
+
+    <h1>12 - Eventos mouseover y mouseout.</h1>
+    <p>Problema: Crear una tabla con dos filas y dos columnas, cambiar el color del interior de la casilla cuando ingresamos con el mouse y dejarla con dicho color cuando retiramos la flecha.</p>
+
+    <table border="1" id="tablaEventos">
+        <tr>
+            <td>Celda 1</td>
+            <td>Celda 2</td>
+        </tr>
+        <tr>
+            <td>Celda 3</td>
+            <td>Celda 4</td>
+        </tr>
+    </table>
+
+    <script>
+        $(document).ready(function(){
+            $("#tablaEventos td").mouseover(function(){
+                $(this).css("background-color", "lightgreen");
+            });
+
+            $("#tablaEventos td").mouseout(function(){
+                $(this).css("background-color", "");
+            });
+        });
+    </script>
+
+</body>
+</html>
